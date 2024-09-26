@@ -17,14 +17,14 @@ class Product:
         return(f'{self.name}, {self.weight}, {self.category}')
 
 
-class Shop(Product):
+class Shop():
     """
     Класс Продукты с атрибутами
 
     """
 
-    def __init__(self, name, weight, category, __file_name='products.txt'):
-        super().__init__(name, weight, category)
+    def __init__(self, __file_name='products.txt'):
+
         self.__file_name = __file_name
 
     __file_name = 'products.txt'
@@ -38,13 +38,13 @@ class Shop(Product):
     def add(self, *product):
         for i in product:
             inf = (str(i))
-            file = open(self.__file_name, 'r')
+            file = open(self.__file_name, 'ra')
             f = file.read()
-            file.close()
+
             if inf in f:
                 print(f'Продукт {inf} уже есть в магазине')
             else:
-                file = open(self.__file_name, 'a')
+
                 file.write(f'\n{inf}')
                 file.close()
 
